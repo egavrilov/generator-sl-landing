@@ -1,5 +1,4 @@
-export function routerConfig ($routeProvider) {
-  'ngInject';
+function routerConfig ($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'app/main/main.html',
@@ -10,3 +9,4 @@ export function routerConfig ($routeProvider) {
       redirectTo: '/'
     });
 }
+export /*@ngInject*/ routerConfig;

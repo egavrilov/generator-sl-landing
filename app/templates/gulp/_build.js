@@ -51,7 +51,7 @@ gulp.task('html', ['inject', 'partials'], function () {
 <% if (props.jsPreprocessor.srcExtension !== 'es6' && props.jsPreprocessor.key !== 'typescript') { -%>
     .pipe($.ngAnnotate())
 <% } -%>
-    .pipe($.uglify({ preserveComments: $.uglifySaveLicense })).on('error', conf.errorHandler('Uglify'))
+    .pipe($.uglify()).on('error', conf.errorHandler('Uglify'))
     .pipe($.sourcemaps.write('maps'))
     .pipe(jsFilter.restore)
     .pipe(cssFilter)
@@ -70,7 +70,7 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe(cssFilter.restore)
     .pipe(assets.restore())
     .pipe($.useref())
-    .pipe($.revReplace())
+    .pipe($.revReplace({ prefix: conf.cdnPrefix || '' }))
     .pipe(htmlFilter)
     .pipe($.minifyHtml({
       empty: true,
