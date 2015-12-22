@@ -3,4 +3,4 @@ function config ($logProvider) {
   $logProvider.debugEnabled(true);
 }
 
-export /*@ngInject*/ config;
+export default /*@ngInject*/ config;
